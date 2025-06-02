@@ -6,9 +6,6 @@
 
 ## Preview
 ![Website Preview](preview-screenshot.png)
-
-*To add your own screenshot: Take a screenshot of your website, upload it to your repository, then replace the placeholder link above*
-
 ---
 
 ## About This Application Portfolio
@@ -34,14 +31,7 @@ Interactive web portfolio showcasing qualifications for the Royal Botanic Garden
 - **Email:** mancekpalizoja@gmail.com
 - **Phone:** +44 7785 108549
 - **Location:** Edinburgh, Scotland
-
----
-
-### How to View This Application
-
-1. **Click the "VIEW LIVE WEBSITE" link above** to see the full interactive portfolio
-2. The website showcases all qualifications with modern, professional design
-3. Optimized for desktop and mobile viewing
+- **[Linkedin](https://www.linkedin.com/in/zoja-manček-páli-7ab0581b4/)** 
 
 ---
 
