@@ -5,7 +5,7 @@
 ---
 
 ## Preview
-![Website Preview](https://via.placeholder.com/800x600/2d5016/ffffff?text=Add+Screenshot+Here)
+![Website Preview](RBGE-Application/preview-screenshot.png)
 
 *To add your own screenshot: Take a screenshot of your website, upload it to your repository, then replace the placeholder link above*
 
