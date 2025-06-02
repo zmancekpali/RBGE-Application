@@ -5,7 +5,7 @@
 ---
 
 ## Preview
-![Website Preview](RBGE-Application/preview-screenshot.png)
+![Website Preview](preview-screenshot.png)
 
 *To add your own screenshot: Take a screenshot of your website, upload it to your repository, then replace the placeholder link above*
 
