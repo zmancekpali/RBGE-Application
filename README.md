@@ -1,1 +1,1 @@
-![](./zoja_rbge_application.html)
+![](./path/zoja_rbge_application.html)
