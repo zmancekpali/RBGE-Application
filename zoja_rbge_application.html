@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoja Manček Páli - RBGE Bryophyte Trainee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c1e 50%, #6b9c3d 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(107, 156, 61, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #2d5016;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            color: #4a7c1e;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .rbge-logo {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #2d5016, #4a7c1e);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2d5016, #4a7c1e, #6b9c3d);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #2d5016;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #4a7c1e, #6b9c3d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #f39c12;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.2);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #e8f5e8, #d4f1d4);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(135deg, #4a7c1e, #6b9c3d);
+            color: white;
+            transform: scale(1.05);
+            border-color: #2d5016;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #f8f9ff, #e6f2ff);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.2);
+        }
+
+        .match-indicator {
+            display: inline-block;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 5px solid #e74c3c;
+            font-style: italic;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.1);
+        }
+
+        .quote {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            font-weight: bold;
+            color: #e74c3c;
+            font-style: normal;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2d5016, #4a7c1e);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(45, 80, 22, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .microscope-animation {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: rgba(107, 156, 61, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .moss-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(circle, #2d5016 2px, transparent 2px);
+            background-size: 50px 50px;
+            z-index: -2;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="moss-pattern"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="microscope-animation">🔬</div>
+            <h1>Zoja Manček Páli</h1>
+            <p class="subtitle">The Perfect Fit for RBGE's Bryophyte Trainee Position</p>
+            <div class="rbge-logo">Royal Botanic Garden Edinburgh | Taxonomy & Macroecology</div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2><span class="icon">🎓</span>Academic Excellence</h2>
+                <div class="highlight">
+                    <strong>First-Class Honours in Ecological & Environmental Sciences</strong><br>
+                    University of Edinburgh (2020-2024)
+                </div>
+                <p><strong>Strategic Module Selection:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Evolution and Ecology of Plants</li>
+                    <li>Plant Physiological Ecology</li>
+                    <li>Field Ecology</li>
+                    <li>Green Planet</li>
+                </ul>
+                <div class="experience-item">
+                    <strong>Dissertation Research:</strong> "Assessing invasion risk based on leaf trait similarity in Scotland" - conducted at RBGE with Peter Brownless, demonstrating direct experience with the institution's research environment.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🔬</span>Microscopy Mastery</h2>
+                <div class="highlight">
+                    Perfect match for bryophyte identification requirements!
+                </div>
+                <div class="experience-item">
+                    <strong>PhD Project Volunteering (May-Sep 2024):</strong><br>
+                    Identified invertebrates to species level using stereomicroscopes, demonstrating exceptional fine-scale pattern recognition abilities.
+                </div>
+                <div class="experience-item">
+                    <strong>Laboratory Assistant (Mar-May 2025):</strong><br>
+                    Precise manipulation of minute root structures, high-resolution scanning, and morphological analysis - skills directly transferable to bryophyte work.
+                </div>
+                <span class="match-indicator">✓ Perfect Skill Match</span>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🏔️</span>Scottish Fieldwork Ready</h2>
+                <div class="highlight">
+                    "I am physically capable of undertaking fieldwork in remote, sometimes mountainous terrain; an aspect of the traineeship I am particularly excited by."
+                </div>
+                <p><strong>Proven Field Experience:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Extensive field-based research in Scottish Highlands</li>
+                    <li>Sample collection across diverse terrains</li>
+                    <li>Ecological survey techniques implementation</li>
+                    <li>Environmental data collection in challenging conditions</li>
+                </ul>
+                <p>Ready for <em>"regular bryophyte field trips in Scotland"</em> from day one!</p>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">💚</span>Genuine Bryophyte Passion</h2>
+                <div class="testimonial">
+                    <div class="quote">"The subtle complexity and critical ecological significance of bryophytes truly captured my ecological curiosity. This has solidified my ambition to focus my career on understanding and conserving these vital components of Scotland's botanical heritage."</div>
+                    <div class="author">- From Cover Letter</div>
+                </div>
+                <p><strong>Why This Matters:</strong> The position requires <em>"strong interest in bryophytes and an enthusiasm to learn"</em> - Zoja's passion goes beyond academic requirement to genuine career dedication.</p>
+            </div>
+
+            <div class="card full-width">
+                <h2><span class="icon">🎯</span>Essential Requirements - Perfect Alignment</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>✓ Strong Bryophyte Interest</strong><br>
+                        <small>Demonstrated through coursework & career focus</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Fine-Scale Pattern Recognition</strong><br>
+                        <small>Proven through microscopy work</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Microscopy Skills</strong><br>
+                        <small>Stereo & compound microscope experience</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Self-Motivated</strong><br>
+                        <small>First-class degree & independent research</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Physically Fit</strong><br>
+                        <small>Scottish Highland fieldwork experience</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Communication Skills</strong><br>
+                        <small>Academic writing & presentation experience</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Natural History Knowledge</strong><br>
+                        <small>Ecological & Environmental Sciences degree</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Ecology Experience</strong><br>
+                        <small>Multiple internships & volunteer work</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Microsoft Tools</strong><br>
+                        <small>Word, Excel, Teams, Outlook proficient</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>✓ Full Driving Licence</strong><br>
+                        <small>Ready for Scottish fieldwork travel</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌿</span>RBGE Connection</h2>
+                <div class="highlight">
+                    Already part of the RBGE family!
+                </div>
+                <p><strong>Previous Collaboration:</strong> Worked directly with Peter Brownless at RBGE during dissertation research, demonstrating:</p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Familiarity with RBGE's research environment</li>
+                    <li>Ability to collaborate with RBGE staff</li>
+                    <li>Understanding of institutional standards</li>
+                    <li>Proven reliability and professionalism</li>
+                </ul>
+                <p><em>"Having previously worked under Peter Brownless in the RBGE, the opportunity to return and develop specialist expertise in bryology is one I am exceptionally eager to pursue."</em></p>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">📊</span>Technical Excellence</h2>
+                <div class="highlight">
+                    Advanced analytical capabilities beyond basic requirements
+                </div>
+                <p><strong>Data Analysis & Research Skills:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>RStudio & Python proficiency</li>
+                    <li>Statistical analysis & data visualization</li>
+                    <li>Environmental monitoring (HB4EU project)</li>
+                    <li>Spectrometric analysis (ICP-MS, CV-AFS, CV-AAS)</li>
+                    <li>Independent research project completion</li>
+                </ul>
+                <p>Perfect for developing <em>"support skills for bryological and ecological surveying (report writing, species recording, mapping, statistics)"</em></p>
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <h2><span class="icon">🚀</span>Ready for Immediate Impact</h2>
+            <div class="grid" style="margin-top: 20px;">
+                <div>
+                    <h3 style="color: #2d5016; margin-bottom: 15px;">Traineeship Goals Alignment:</h3>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Field trips in Scotland:</strong> Extensive Scottish fieldwork experience ✓</li>
+                        <li><strong>Herbarium & lab facilities:</strong> Ready to utilize microscopy skills ✓</li>
+                        <li><strong>British Bryological Society engagement:</strong> Enthusiastic participation planned ✓</li>
+                        <li><strong>MSc-level classes:</strong> Academic excellence proven ✓</li>
+                        <li><strong>Independent project:</strong> Dissertation experience demonstrates capability ✓</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #2d5016; margin-bottom: 15px;">Beyond Requirements:</h3>
+                    <div class="experience-item">
+                        <strong>International Research Experience:</strong> Jožef Stefan Institute internships demonstrate adaptability and high-level research capabilities.
+                    </div>
+                    <div class="experience-item">
+                        <strong>Conservation Focus:</strong> Dissertation on invasive species shows commitment to conservation, aligning with RBGE's mission.
+                    </div>
+                    <div class="experience-item">
+                        <strong>Multi-disciplinary Skills:</strong> AI/ML experience and environmental chemistry background bring unique perspectives to bryological research.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>The Perfect Candidate for an Exceptional Opportunity</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Zoja brings the rare combination of academic excellence, practical experience, genuine passion for bryophytes, and proven ability to work within the RBGE environment. This isn't just a career opportunity - it's a perfect match between candidate and institution.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    📧 mancekpalizoja@gmail.com
+                </div>
+                <div class="contact-item">
+                    📱 +44 7785 108549
+                </div>
+                <div class="contact-item">
+                    📍 Edinburgh, Scotland
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; font-style: italic;">"Ready to contribute to RBGE's world-leading bryophyte research from day one!"</p>
+        </div>
+    </div>
+</body>
+</html>
