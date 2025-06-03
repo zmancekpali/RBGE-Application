@@ -28,7 +28,7 @@ Interactive web portfolio showcasing qualifications for the Royal Botanic Garden
 ## 🔗 Quick Links
 
 - **[View Live Website](https://zmancekpali.github.io/RBGE-Application)**
-- **[CV](CV Zoja Manček Páli | RBGE Bryophyte Trainee.pdf)**
+- **[CV](RBGE-Application/CV Zoja Manček Páli | RBGE Bryophyte Trainee.pdf)**
 - **[Covering Letter](Zoja Manček Páli | RBGE Bryophyte Trainee.pdf)**
 - **Email:** mancekpalizoja@gmail.com
 - **Phone:** +44 7785 108549
