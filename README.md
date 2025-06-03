@@ -3,11 +3,6 @@
 ## 🌿 [**VIEW LIVE WEBSITE →**](https://zmancekpali.github.io/RBGE-Application)
 
 ---
-
-## Preview
-![Website Preview](preview-screenshot.png)
----
-
 ## About This Application Portfolio
 
 Interactive web portfolio showcasing qualifications for the Royal Botanic Garden Edinburgh Bryophyte Trainee position in Taxonomy and Macroecology.
